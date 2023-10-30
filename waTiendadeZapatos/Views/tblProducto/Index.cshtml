@@ -1,0 +1,65 @@
+﻿@model IEnumerable<waTiendadeZapatos.tblProducto>
+
+@{
+    ViewBag.Title = "Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos</h2>
+
+<p>
+    @Html.ActionLink("Registrar nuevo producto", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.intCodigoProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strNombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strTipoProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblEmpleado.intCodigoEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblEmpleado.strNombreEmpleado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.intCodigoProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strNombreProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strTipoProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblEmpleado.intCodigoEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblEmpleado.strNombreEmpleado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.intCodigoProducto }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.intCodigoProducto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.intCodigoProducto })
+        </td>
+    </tr>
+}
+
+</table>

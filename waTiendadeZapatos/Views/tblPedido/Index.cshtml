@@ -1,0 +1,71 @@
+﻿@model IEnumerable<waTiendadeZapatos.tblPedido>
+
+@{
+    ViewBag.Title = "Pedidos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pedidos</h2>
+
+<p>
+    @Html.ActionLink("Registrar nuevo pedido", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.intCodigoPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.intCantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datFechaPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblEmpleado.intCodigoEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblEmpleado.strNombreEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblProducto.intCodigoProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblProducto.strNombreProducto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.intCodigoPedido)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.intCantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datFechaPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblEmpleado.intCodigoEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblEmpleado.strNombreEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblProducto.intCodigoProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblProducto.strNombreProducto)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.intCodigoPedido }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.intCodigoPedido }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.intCodigoPedido })
+        </td>
+    </tr>
+}
+
+</table>

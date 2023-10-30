@@ -1,0 +1,68 @@
+﻿@model waTiendadeZapatos.tblProducto
+
+@{
+    ViewBag.Title = "Eliminar Producto |";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar Producto</h2>
+
+
+<div>
+    <h4>tblProducto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.strNombreProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strNombreProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strTipoProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strTipoProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblEmpleado.strNombreEmpleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblEmpleado.strNombreEmpleado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>
+
+@if (TempData["ErrorMessage"] != null)
+{
+
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    @*<script>
+            alert('@TempData["ErrorMessage"]');
+        </script>*@
+}
+

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<waTiendadeZapatos.tblEmpleado>
+
+@{
+    ViewBag.Title = "Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Empleados</h2>
+
+<p>
+    @Html.ActionLink("Registrar nuevo empleado", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.intCodigoEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strNombreEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strNombreEmpleado2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strApellidoEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strApellidoEmpleado2)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.intCodigoEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strNombreEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strNombreEmpleado2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strApellidoEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strApellidoEmpleado2)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.intCodigoEmpleado }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.intCodigoEmpleado }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.intCodigoEmpleado })
+        </td>
+    </tr>
+}
+
+</table>

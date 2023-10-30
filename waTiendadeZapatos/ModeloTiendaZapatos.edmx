@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dboTiendaZapatosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblEmpleado">
+          <Key>
+            <PropertyRef Name="intCodigoEmpleado" />
+          </Key>
+          <Property Name="intCodigoEmpleado" Type="int" Nullable="false" />
+          <Property Name="strNombreEmpleado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="strNombreEmpleado2" Type="varchar" MaxLength="30" />
+          <Property Name="strApellidoEmpleado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="strApellidoEmpleado2" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPedido">
+          <Key>
+            <PropertyRef Name="intCodigoPedido" />
+          </Key>
+          <Property Name="intCodigoPedido" Type="int" Nullable="false" />
+          <Property Name="intCodigoProducto" Type="int" />
+          <Property Name="intCodigoEmpleado" Type="int" />
+          <Property Name="intCantidad" Type="int" Nullable="false" />
+          <Property Name="datFechaPedido" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProducto">
+          <Key>
+            <PropertyRef Name="intCodigoProducto" />
+          </Key>
+          <Property Name="intCodigoProducto" Type="int" Nullable="false" />
+          <Property Name="strNombreProducto" Type="varchar" MaxLength="50" />
+          <Property Name="strTipoProducto" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="intCodigoEmpleado" Type="int" />
+          <Property Name="Valor" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tblPedido__intCo__4E88ABD4">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="0..1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="intCodigoProducto" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="intCodigoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__intCo__4F7CD00D">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__intCo__4BAC3F29">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Principal>
+            <Dependent Role="tblProducto">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dboTiendaZapatosModelStoreContainer">
+          <EntitySet Name="tblEmpleado" EntityType="Self.tblEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPedido" EntityType="Self.tblPedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProducto" EntityType="Self.tblProducto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblPedido__intCo__4E88ABD4" Association="Self.FK__tblPedido__intCo__4E88ABD4">
+            <End Role="tblProducto" EntitySet="tblProducto" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__intCo__4F7CD00D" Association="Self.FK__tblPedido__intCo__4F7CD00D">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__intCo__4BAC3F29" Association="Self.FK__tblProduc__intCo__4BAC3F29">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblProducto" EntitySet="tblProducto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dboTiendaZapatosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblEmpleado">
+          <Key>
+            <PropertyRef Name="intCodigoEmpleado" />
+          </Key>
+          <Property Name="intCodigoEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="strNombreEmpleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="strNombreEmpleado2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="strApellidoEmpleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="strApellidoEmpleado2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblPedido" Relationship="Self.FK__tblPedido__intCo__4F7CD00D" FromRole="tblEmpleado" ToRole="tblPedido" />
+          <NavigationProperty Name="tblProducto" Relationship="Self.FK__tblProduc__intCo__4BAC3F29" FromRole="tblEmpleado" ToRole="tblProducto" />
+        </EntityType>
+        <EntityType Name="tblPedido">
+          <Key>
+            <PropertyRef Name="intCodigoPedido" />
+          </Key>
+          <Property Name="intCodigoPedido" Type="Int32" Nullable="false" />
+          <Property Name="intCodigoProducto" Type="Int32" />
+          <Property Name="intCodigoEmpleado" Type="Int32" />
+          <Property Name="intCantidad" Type="Int32" Nullable="false" />
+          <Property Name="datFechaPedido" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblPedido__intCo__4F7CD00D" FromRole="tblPedido" ToRole="tblEmpleado" />
+          <NavigationProperty Name="tblProducto" Relationship="Self.FK__tblPedido__intCo__4E88ABD4" FromRole="tblPedido" ToRole="tblProducto" />
+        </EntityType>
+        <EntityType Name="tblProducto">
+          <Key>
+            <PropertyRef Name="intCodigoProducto" />
+          </Key>
+          <Property Name="intCodigoProducto" Type="Int32" Nullable="false" />
+          <Property Name="strNombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strTipoProducto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="intCodigoEmpleado" Type="Int32" />
+          <Property Name="Valor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblProduc__intCo__4BAC3F29" FromRole="tblProducto" ToRole="tblEmpleado" />
+          <NavigationProperty Name="tblPedido" Relationship="Self.FK__tblPedido__intCo__4E88ABD4" FromRole="tblProducto" ToRole="tblPedido" />
+        </EntityType>
+        <Association Name="FK__tblPedido__intCo__4F7CD00D">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__intCo__4BAC3F29">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Principal>
+            <Dependent Role="tblProducto">
+              <PropertyRef Name="intCodigoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__intCo__4E88ABD4">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="0..1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="intCodigoProducto" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="intCodigoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dboTiendaZapatosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblEmpleado" EntityType="Self.tblEmpleado" />
+          <EntitySet Name="tblPedido" EntityType="Self.tblPedido" />
+          <EntitySet Name="tblProducto" EntityType="Self.tblProducto" />
+          <AssociationSet Name="FK__tblPedido__intCo__4F7CD00D" Association="Self.FK__tblPedido__intCo__4F7CD00D">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__intCo__4BAC3F29" Association="Self.FK__tblProduc__intCo__4BAC3F29">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblProducto" EntitySet="tblProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__intCo__4E88ABD4" Association="Self.FK__tblPedido__intCo__4E88ABD4">
+            <End Role="tblProducto" EntitySet="tblProducto" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dboTiendaZapatosModelStoreContainer" CdmEntityContainer="dboTiendaZapatosEntities">
+          <EntitySetMapping Name="tblEmpleado">
+            <EntityTypeMapping TypeName="dboTiendaZapatosModel.tblEmpleado">
+              <MappingFragment StoreEntitySet="tblEmpleado">
+                <ScalarProperty Name="intCodigoEmpleado" ColumnName="intCodigoEmpleado" />
+                <ScalarProperty Name="strNombreEmpleado" ColumnName="strNombreEmpleado" />
+                <ScalarProperty Name="strNombreEmpleado2" ColumnName="strNombreEmpleado2" />
+                <ScalarProperty Name="strApellidoEmpleado" ColumnName="strApellidoEmpleado" />
+                <ScalarProperty Name="strApellidoEmpleado2" ColumnName="strApellidoEmpleado2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPedido">
+            <EntityTypeMapping TypeName="dboTiendaZapatosModel.tblPedido">
+              <MappingFragment StoreEntitySet="tblPedido">
+                <ScalarProperty Name="intCodigoPedido" ColumnName="intCodigoPedido" />
+                <ScalarProperty Name="intCodigoProducto" ColumnName="intCodigoProducto" />
+                <ScalarProperty Name="intCodigoEmpleado" ColumnName="intCodigoEmpleado" />
+                <ScalarProperty Name="intCantidad" ColumnName="intCantidad" />
+                <ScalarProperty Name="datFechaPedido" ColumnName="datFechaPedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducto">
+            <EntityTypeMapping TypeName="dboTiendaZapatosModel.tblProducto">
+              <MappingFragment StoreEntitySet="tblProducto">
+                <ScalarProperty Name="intCodigoProducto" ColumnName="intCodigoProducto" />
+                <ScalarProperty Name="strNombreProducto" ColumnName="strNombreProducto" />
+                <ScalarProperty Name="strTipoProducto" ColumnName="strTipoProducto" />
+                <ScalarProperty Name="intCodigoEmpleado" ColumnName="intCodigoEmpleado" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

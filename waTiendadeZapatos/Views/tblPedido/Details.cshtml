@@ -1,0 +1,51 @@
+﻿@model waTiendadeZapatos.tblPedido
+
+@{
+    ViewBag.Title = "Detalles Pedido |";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles Pedido</h2>
+
+<div>
+    <h4>tblPedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.intCantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intCantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datFechaPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datFechaPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblEmpleado.strNombreEmpleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblEmpleado.strNombreEmpleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblProducto.strNombreProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProducto.strNombreProducto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.intCodigoPedido }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>
